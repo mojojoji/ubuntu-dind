@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 RUN apt update \
 	&& apt install -y ca-certificates openssh-client \
-	wget curl iptables supervisor python3-protobuf libnet1 libnl-3-200 libprotobuf-c1 \
+	wget curl iptables supervisor python3-protobuf libnet1 libnl-3-200 libprotobuf-c1 libprotobuf17 python3-six \
 	&& rm -rf /var/lib/apt/list/*
 
 RUN curl -o criu.deb http://ftp.us.debian.org/debian/pool/main/c/criu/criu_3.14-1_amd64.deb && \
