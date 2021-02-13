@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 RUN apt update \
 	&& apt install -y ca-certificates openssh-client \
-	wget curl iptables supervisor ap \
+	wget curl iptables supervisor python3-protobuf libnet1 libnl-3-200 libprotobuf-c1 \
 	&& rm -rf /var/lib/apt/list/*
 
 ENV DOCKER_CHANNEL=stable \
