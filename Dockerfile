@@ -5,6 +5,9 @@ RUN apt update \
 	wget curl iptables supervisor python3-protobuf libnet1 libnl-3-200 libprotobuf-c1 \
 	&& rm -rf /var/lib/apt/list/*
 
+RUN curl -o criu.deb http://ftp.us.debian.org/debian/pool/main/c/criu/criu_3.14-1_amd64.deb && \
+	dpkg -i criu.deb
+
 ENV DOCKER_CHANNEL=stable \
 	DOCKER_VERSION=19.03.11 \
 	DOCKER_COMPOSE_VERSION=1.26.0 \
