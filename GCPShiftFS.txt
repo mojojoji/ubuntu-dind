@@ -1,0 +1,22 @@
+# Verify that 'shiftfs' module is not already present.
+$ lsmod | grep shiftfs
+
+# We'll need dkms package to build shiftfs.
+$ sudo apt-get update && sudo apt-get install dkms -y
+
+$ git clone git@github.com:toby63/shiftfs-dkms.git
+
+$ cd shiftfs-dkms/
+
+$ sudo ./update1
+
+$ sudo make -f Makefile.dkms
+
+# Verify that 'shiftfs' module has been properly installed in modules path:
+$ sudo find /lib/modules/$(uname -r)/ -iname "*shiftf*"
+/lib/modules/5.4.0-1021-aws/updates/dkms/shiftfs.ko
+
+# Load module and check that is properly loaded:
+$ sudo modprobe shiftfs
+$ lsmod | grep shiftfs
+shiftfs                28672  0
